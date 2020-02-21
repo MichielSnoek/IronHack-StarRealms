@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>IronHack-StarRealms</title>
+</head>
+<body>
+    <body>
+        <div class='overlay'>
+            <div class="container">
+                <p>enter player name:</p>
+                <input type="text" value=""/>
+                <button>start game</button>
+            </div>
+        </div>
+
+        <div class="wrapper">
+            
+            <section class="main-boss-area">
+                <div class="boss-deck">
+                    <div class="boss-row">
+                        
+                     </div>
+                </div>
+
+        
+                <div class="stats">
+                    <div>
+                        <p>Boss name: Automatons</p>
+                    </div>
+                    <div class="icons">
+                        <div class="icon" id="boss-health"> 
+                            <img src="./img/Icons/Icons/Health.png" alt="">
+                            <input type="text" value="50">
+                        </div>
+                        <div class="icon" id="boss-attack">
+                            <img src="./img/Icons/Icons/Attack.png" alt="">
+                            <input type="text" value="0">
+                        </div>
+                        <div class="icon" id="boss-assimilation">
+                            <img src="./img/Icons/Icons/Outpost-Defence.png" alt="">
+                            <input type="text" value="1">
+                        </div>
+                    </div>
+                </div>  
+            </section>
+    
+    
+        
+            <section class="main-trade-area">
+                <div class="Explorer">
+                    <div class="counter trade-deck-count">
+                        <p>Deck Count</p>
+                        <input type="text" value="0">
+                    </div>
+                    <div class="deck">
+                    <img src="./img/Icons/Cards/Card-Background.png" alt="">
+                    </div>
+                </div>
+    
+        
+                <div>
+                    <div class="trade-area-text">
+                        <p>Trade area</p>
+                        <p id="no-trade">Not Enough Trade</p>
+                    </div>
+                    <div class="trade-row">  
+                    </div>
+                </div>  
+    
+                <div>
+                    <div class="trade-area-text">
+                        <p>Explorer</p>
+                    </div>
+                    <div class="deck" id="explorer">  
+                        <img src="./img/Icons/Cards/Explorer.png" alt="">
+                    </div>
+                </div>  
+
+                <div>
+                    <div class="counter trade-pile-count">
+                        <p>Scrap Count</p>
+                        <input type="text" value="0">
+                    </div>
+                    <div class="deck">
+                    <img src="./img/Icons/Cards/Card-Background.png" alt="">
+                    </div>
+                </div>
+            </section>
+    
+    
+        
+            <section class="main-player-area">
+                <div class="player-container">
+                    <div class="button-container btn">
+                        <button class="draw-hand">draw hand</button>
+                        <button class="attack">attack boss</button>
+                        <button class="draw-card">draw card</button>
+                        <button class="end-turn">end turn</button>
+                    </div>
+
+                    <div class="stats">
+                        <div class="icons">
+                            <div class="icon" id="player-health">
+                                <img src="./img/Icons/Icons/Health.png" alt="">
+                                <input type="text" value="50">
+                            </div>
+                            <div class="icon" id="player-trade">
+                                <img src="./img/Icons/Icons/Trade.png" alt="trade">
+                                <input type="text" value="0">
+                            </div>
+                            <div class="icon" id="player-attack">
+                                <img src="./img/Icons/Icons/Attack.png" alt="">
+                                <input type="text" value="0">
+                            </div>
+                        </div>
+                        <div id="player-name"> 
+                            <span>Player name:</span><p>Unknown</p>
+                        </div>
+                    </div>
+                </div>  
+    
+                <div class="player-deck">
+                    <div>
+                        <div class="counter player-deck-count">
+                            <p>Player Deck</p>
+                            <input type="text" value="0">
+                        </div>
+                        <img src="./img/Icons/Cards/Card-Background.png" alt="">
+                    </div>
+    
+        
+                    <div class="player-row">
+                         
+                    </div>
+    
+       
+                    <div>
+                        <div class="counter player-pile-count">
+                            <p>Discard Pile</p>
+                            <input type="text" value="0">
+                        </div>
+                        <img src="./img/Icons/Cards/Card-Background.png" alt="">
+                    </div>
+                </div>
+            </section>
+        </div>
+    
+        <script src="./js/script.js"></script>
+    </body>
+
+</body>
+</html>
