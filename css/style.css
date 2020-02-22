@@ -46,8 +46,6 @@ img {
 }
 
 .some-explenation {
-    /* display: flex;
-    flex-direction: column; */
     border: 2px solid white;
     border-radius: 5px;
     background-color: #333745;
@@ -102,14 +100,8 @@ img {
     border-radius: 8px;  
 }
 
-
-
 .main-trade-area input{
     color: white;
-}
-
-.trade-row img {
-
 }
 
 .trade-area-text {
@@ -306,3 +298,17 @@ img {
     padding: 4px;
     cursor: pointer;
 }
+
+/* Mobile responsiveness */
+
+@media only screen and (max-width: 1000px) {
+    img {
+        height: 100px;
+    }
+  }
+
+  @media only screen and (max-width: 660px) {
+    img {
+        height: 50px;
+    }
+  }
