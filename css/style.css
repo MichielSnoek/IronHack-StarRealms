@@ -33,15 +33,42 @@ img {
 
 .boss-deck {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     height: 160px;
 }
 .boss-row {
     display: flex;
     align-items: center;
+    margin-left: 20px;
 }
 .boss-row img {
     height: 150px;
+}
+
+.some-explenation {
+    /* display: flex;
+    flex-direction: column; */
+    border: 2px solid white;
+    border-radius: 5px;
+    background-color: #333745;
+    height: 20px;
+}
+#close-window {
+    float: right;
+    font-size: 8px;
+    color: white;
+    margin-right: 6px;
+    padding: 5px;
+    cursor: pointer;
+}  
+
+#info  {
+    margin: 10px 15px 13px 20px;
+}
+
+.some-explenation li {
+    font-size: 12px;
+    color: white;
 }
 /* Trade Area */
 .main-trade-area {
@@ -62,6 +89,7 @@ img {
     border: 2px solid white;
     border-radius: 8px;
     flex-wrap: wrap;
+    cursor: pointer;
 }
 
 .deck {
@@ -93,6 +121,10 @@ img {
     color: red
 }
 
+#explorer {
+    cursor: pointer;
+}
+
 /* Player Area */
 .main-player-area {
     display: flex;
@@ -106,6 +138,7 @@ img {
     align-items: center;
     padding: 0px 10px 10px 10px;
 }
+
 /* Counter */
 
 .counter {
@@ -208,6 +241,7 @@ img {
     font-size: 1em;
     color:#333745;
     animation: colorSwitch 5s infinite;
+    cursor: pointer;
 }
 
 .btn button:hover {
@@ -249,8 +283,8 @@ img {
 .overlay {
     margin: 0px;
     position: absolute;
-    background-color: black;
-    color: white;
+    background-color: #e6c774;
+    color: #333745;
     width: 100%;
     height: 100vh;
 }
@@ -261,6 +295,7 @@ img {
     justify-content: center;
     align-items: center;
     height: 100%;
+    font-size: 30px;
 }
 
 .container > * {
@@ -269,4 +304,5 @@ img {
 
 .container button {
     padding: 4px;
+    cursor: pointer;
 }

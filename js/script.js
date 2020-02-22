@@ -187,7 +187,7 @@ class GameOperator {
         trade: 2,
         heal: 0,
         defense: 0,
-        skill: '',
+        skill: 'draw',
         faction: 'blue',
         scrap: false,
         scrapValue: {
@@ -268,7 +268,7 @@ class GameOperator {
         defense: 0,
         skill: '',
         faction: 'green',
-        scrap: false,
+        scrap: true,
         scrapValue: {
           trade: 0,
           attack: 3,
@@ -501,7 +501,7 @@ class GameOperator {
       }
     })
     const explorerImg = document.querySelector('#explorer img')
-    const explorer = new Card('Explorer', 2, 0, 2, 0, '', 0, '', true, { trade: 2, attack: 0, skill: '' }, './img/Icons/Cards/Explorer.png')
+    const explorer = new Card('Explorer', 2, 0, 2, 0, '', 0, '', true, { trade: 0, attack: 2, skill: '' }, './img/Icons/Cards/Explorer.png')
     explorerImg.addEventListener('click', function () {
       if (Number(explorer.cost) <= Number(playerTrade.value)) {
         that.player.deck.push(explorer)
@@ -526,27 +526,29 @@ class GameOperator {
       if (that.player.row[index].scrap === true) {
         const card = that.player.row.splice(index, 1)
         that.tradeArea.pile.push(card[0])
+        console.log('this is the current player trade value', playerTrade.value)
+        console.log('this is the current player attack value', playerAttack.value)
+        console.log('this is the scrap attack of the explorer',card[0].scrapValue.attack)
         playerTrade.value = Number(playerTrade.value) + card[0].scrapValue.trade
-        playerAttack.value = Number(playerTrade.value) + card[0].scrapValue.attack
-        console.log(that.player.row)
-        console.log(that.player.pile)
+        playerAttack.value = Number(playerAttack.value) + card[0].scrapValue.attack
+        console.log('this is the current player trade value', playerTrade.value)
+        console.log('this is the current player attack value', playerAttack.value)
         that.renderDom()
       }
     })
   }
 
   drawCard () {
-    const drawCard = document.querySelector('.draw-card')
-    const that = this
     this.player.row.forEach(card => {
       if (card.skill === 'draw') {
-        drawCard.style.display = 'initial'
-        drawCard.addEventListener('click', function () {
-          that.player.drawCardToRow(1)
-          that.renderDom()
-          that.updateStats()
-          drawCard.style.display = 'none'
-        })
+        this.ifTradeDeckisEmptyFillIt()
+        this.player.drawCardToRow(1)
+        while (this.player.row[this.player.row.length - 1].skill === 'draw') {
+          this.ifTradeDeckisEmptyFillIt()
+          this.player.drawCardToRow(1)
+        }
+        this.renderDom()
+        this.updateStats()
       }
     })
   }
@@ -557,11 +559,8 @@ class GameOperator {
     const attackBoss = document.querySelector('.attack')
     const that = this
     drawHand.addEventListener('click', function () {
-      console.log(that.boss.row)
       that.pushBossCardsToScrap()
-      if (that.player.deck.length < 5) {
-        that.player.pileToRow()
-      }
+      that.ifTradeDeckisEmptyFillIt()
       that.player.drawCardToRow(5)
       that.updateStats()
       that.renderDom()
@@ -569,7 +568,8 @@ class GameOperator {
       drawHand.style.display = 'none'
       endTurn.style.display = 'initial'
       attackBoss.style.display = 'initial'
-      console.log(that.boss.row)
+      console.log('this is the player row', that.player.row)
+      console.log('this is the tradeArea scrap', that.tradeArea.pile)
     })
   }
 
@@ -598,7 +598,6 @@ class GameOperator {
     for (let i = this.boss.row.length; i > 0; i--) {
       const card = this.boss.row.splice(i - 1, 1)
       this.tradeArea.pile.push(card[0])
-      console.log(this.boss.row)
     }
   }
 
@@ -626,7 +625,6 @@ class GameOperator {
     const attackBoss = document.querySelector('.attack')
     const that = this
     endTurn.addEventListener('click', function () {
-      console.log(that.boss.row)
       that.ifTradeDeckisEmptyFillIt()
       that.player.removeCardToPile(that.player.row.length)
       that.updateStats()
@@ -644,6 +642,9 @@ class GameOperator {
   ifTradeDeckisEmptyFillIt () {
     if (this.tradeArea.deck.length === 0) {
       this.tradeArea.pileToRow()
+    }
+    if (this.player.deck.length < 5) {
+      this.player.pileToRow()
     }
   }
 
@@ -734,6 +735,23 @@ class GameOperator {
     }
   }
 
+  closeInfoWindow () {
+    const closeBtn = document.querySelector('#close-window')
+    const ulList = document.querySelector('.some-explenation ul')
+    const parentElement = document.querySelector('.some-explenation')
+    closeBtn.addEventListener('click', function () {
+      if (ulList.style.display === 'none') {
+        ulList.style.display = 'inherit'
+        parentElement.style.height = '156px'
+        closeBtn.innerHTML = 'x close window'
+      } else {
+        ulList.style.display = 'none'
+        parentElement.style.height = '20px'
+        closeBtn.innerHTML = 'open window'
+      }
+    })
+  }
+
   initializer () {
     this.start()
     this.initialiseStarterDecks()
@@ -742,6 +760,7 @@ class GameOperator {
     this.attackBoss()
     this.endTurn()
     this.scrapCard()
+    this.closeInfoWindow()
   }
 }
 
